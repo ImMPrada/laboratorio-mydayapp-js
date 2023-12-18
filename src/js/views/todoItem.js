@@ -9,6 +9,12 @@ export const todoItem = (toDo, toDos) => {
     controller.update(id, { completed: !completedState }, toDos);
   };
 
+  const updateTitle = (id, title) => {
+    if (toDo.title === title || title == "") return;
+
+    controller.update(id, { title }, toDos);
+  };
+
   const li = document.createElement("li");
   toDo.completed ? li.classList.add("completed") : null;
 
@@ -25,6 +31,11 @@ export const todoItem = (toDo, toDos) => {
 
   const label = document.createElement("label");
   label.textContent = toDo.title;
+  label.addEventListener("click", () => {
+    if (!li.classList.contains("completed")) {
+      li.classList.add("editing");
+    }
+  });
 
   const button = document.createElement("button");
   button.classList.add("destroy");
@@ -32,7 +43,13 @@ export const todoItem = (toDo, toDos) => {
 
   const input = document.createElement("input");
   input.classList.add("edit");
-  input.value = "Learn JavaScript";
+  input.value = toDo.title;
+  input.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+      li.classList.remove("editing");
+      updateTitle(toDo.id, input.value);
+    }
+  });
 
   div.appendChild(checkbox);
   div.appendChild(label);

@@ -35,7 +35,7 @@ export class ToDos {
       return;
     }
 
-    this.filter = null;
+    this.filter = ALL_FILTER;
     this.filteredToDos = this.toDos;
   }
 

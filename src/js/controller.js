@@ -21,7 +21,7 @@ export const destroy = (id, toDos) => {
   view.renderNewList(toDos);
 };
 
-export const toggleCompleted = (id, toDos) => {
-  toDos.toggleCompletedById(id);
+export const update = (id, payload, toDos) => {
+  toDos.updateById(id, payload);
   view.renderNewList(toDos);
 };

@@ -13,20 +13,24 @@ export class ToDos {
   }
 
   loadAll() {
-    this.toDos = storage.readAllToDos();
+    const storedToDos = storage.readAllToDos();
+    this.toDos = storedToDos.map(
+      (storedToDo) =>
+        new ToDo(storedToDo.title, storedToDo.id, storedToDo.completed)
+    );
   }
 
   filterBy(filter) {
     this.filter = filter;
 
     if (filter === COMPLETED_FILTER) {
-      this.filteredToDos = this.toDos.filter((todo) => todo.completed === true);
+      this.filteredToDos = this.toDos.filter((toDo) => toDo.completed === true);
       return;
     }
 
     if (filter === PENDING_FILTER) {
       this.filteredToDos = this.toDos.filter(
-        (todo) => todo.completed === false
+        (toDo) => toDo.completed === false
       );
       return;
     }
@@ -36,16 +40,16 @@ export class ToDos {
   }
 
   destroyById(id) {
-    this.toDos = this.toDos.filter((todo) => todo.id !== id);
+    this.toDos = this.toDos.filter((toDo) => toDo.id !== id);
     storage.writeAllToDos(this.toDos);
 
     this.filterBy(this.filter);
   }
 
-  toggleCompletedById(id) {
-    this.toDos = this.toDos.map((todo) => {
-      if (todo.id === id) todo.completed = !todo.completed;
-      return todo;
+  updateById(id, payload) {
+    this.toDos = this.toDos.map((toDo) => {
+      if (toDo.id === id) toDo.update(payload);
+      return toDo;
     });
     storage.writeAllToDos(this.toDos);
 

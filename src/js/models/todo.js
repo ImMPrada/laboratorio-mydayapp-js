@@ -1,19 +1,24 @@
 export class ToDo {
-  constructor(title, completed = false) {
-    const timestamp = new Date().getTime();
-    const firstRandomPart = Math.floor(Math.random() * 100);
-    const secondRandomPart = Math.floor(Math.random() * 100);
-
-    this.id = `${firstRandomPart}${timestamp}${secondRandomPart}`;
+  constructor(title, id = null, completed = false) {
+    this.id = id ? id : ToDo.generateId();
     this.title = title;
     this.completed = completed;
   }
 
-  markAsCompleted() {
-    this.completed = true;
+  update(payload) {
+    if (payload.title) {
+      this.title = payload.title;
+    }
+    if (payload.completed !== undefined) {
+      this.completed = payload.completed;
+    }
   }
 
-  markAsIncomplete() {
-    this.completed = false;
+  static generateId() {
+    const timestamp = new Date().getTime();
+    const firstRandomPart = Math.floor(Math.random() * 100);
+    const secondRandomPart = Math.floor(Math.random() * 100);
+
+    return `${firstRandomPart}${timestamp}${secondRandomPart}`;
   }
 }

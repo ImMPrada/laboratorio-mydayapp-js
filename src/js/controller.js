@@ -1,5 +1,5 @@
-import * as view from '../views/todoList';
-import { COMPLETED_FILTER } from '../models/todo'
+import * as view from './views/todoList';
+import { COMPLETED_FILTER } from './models/todos'
 
 export const index = (filter, toDos) => {
   toDos.loadAll();

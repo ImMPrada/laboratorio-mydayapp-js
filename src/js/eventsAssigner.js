@@ -1,4 +1,4 @@
-import { listenHashChange, createTodo } from "./routes/todos";
+import { listenHashChange, createTodo } from "./routes";
 
 const INPUT_TODO_TEXT_BOX = "new_todo_description";
 

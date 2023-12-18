@@ -1,7 +1,7 @@
 import "./css/base.css";
-import { addEventToToDoInput, addHashListenerToDocument } from "./js/utils";
-import { routeTo } from './js/routes/todos';
-import { ToDos } from './js/models/todo';
+import { addEventToToDoInput, addHashListenerToDocument } from "./js/eventsAssigner";
+import { routeTo } from './js/routes';
+import { ToDos } from './js/models/todos';
 
 const TODOS = new ToDos();
 TODOS.loadAll();

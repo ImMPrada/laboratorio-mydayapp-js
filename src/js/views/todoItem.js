@@ -1,4 +1,4 @@
-import * as controller from '../controllers/todos'
+import * as controller from '../controller'
 
 
 export const todoItem = (toDo, toDos) => {

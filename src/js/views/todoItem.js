@@ -1,58 +1,22 @@
-import * as controller from "../controller";
+import { checkbox } from "./todoItemComponents/checkbox";
+import { deleteButton } from "./todoItemComponents/deleteButton";
+import { inputEdit } from "./todoItemComponents/inputEdit";
+import { label } from "./todoItemComponents/label";
 
 export const todoItem = (toDo, toDos) => {
-  const deleteItem = (id) => {
-    controller.destroy(id, toDos);
-  };
-
-  const toggleCompletedState = (id, completedState) => {
-    controller.update(id, { completed: !completedState }, toDos);
-  };
-
-  const updateTitle = (id, title) => {
-    if (toDo.title === title || title == "") return;
-
-    controller.update(id, { title }, toDos);
-  };
-
   const li = document.createElement("li");
   toDo.completed ? li.classList.add("completed") : null;
 
   const div = document.createElement("div");
   div.classList.add("view");
 
-  const checkbox = document.createElement("input");
-  checkbox.classList.add("toggle");
-  checkbox.type = "checkbox";
-  checkbox.checked = toDo.completed;
-  checkbox.addEventListener("change", () =>
-    toggleCompletedState(toDo.id, toDo.completed)
-  );
+  const checkboxComponent = checkbox(toDo, toDos);
+  const button = deleteButton(toDo, toDos);
+  const input = inputEdit(toDo, toDos, li);
+  const labelComponent = label(toDo, li, input);
 
-  const label = document.createElement("label");
-  label.textContent = toDo.title;
-  label.addEventListener("click", () => {
-    if (!li.classList.contains("completed")) {
-      li.classList.add("editing");
-    }
-  });
-
-  const button = document.createElement("button");
-  button.classList.add("destroy");
-  button.addEventListener("click", () => deleteItem(toDo.id));
-
-  const input = document.createElement("input");
-  input.classList.add("edit");
-  input.value = toDo.title;
-  input.addEventListener("keyup", (e) => {
-    if (e.key === "Enter") {
-      li.classList.remove("editing");
-      updateTitle(toDo.id, input.value);
-    }
-  });
-
-  div.appendChild(checkbox);
-  div.appendChild(label);
+  div.appendChild(checkboxComponent);
+  div.appendChild(labelComponent);
   div.appendChild(button);
 
   li.appendChild(div);

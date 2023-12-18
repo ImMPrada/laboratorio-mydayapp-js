@@ -28,7 +28,7 @@ export const addCompletedCleanerListenerToButton = (toDos) => {
 };
 
 const handleNewToDoInput = (event, toDos) => {
-  const title = event.target.value;
+  const title = event.target.value.trim();
   if (event.key != "Enter") return;
   if (title == "") return;
 

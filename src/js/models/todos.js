@@ -75,4 +75,8 @@ export class ToDos {
   countPending() {
     return this.toDos.filter((toDo) => toDo.completed === false).length;
   }
+
+  countCompleted() {
+    return this.toDos.length - this.countPending();
+  }
 }

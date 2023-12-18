@@ -41,6 +41,7 @@ export const footer = (toDos) => {
   button.classList.add("clear-completed");
   button.id = "clear_completed_button";
   button.innerHTML = "Clear completed";
+  if (toDos.countCompleted() === 0) button.hidden = true;
 
   // all.appendChild(allLink);
   // pending.appendChild(pendingLink);

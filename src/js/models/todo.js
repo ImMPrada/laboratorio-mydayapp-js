@@ -1,4 +1,3 @@
-
 export class ToDo {
   constructor(title, completed = false) {
     const timestamp = new Date().getTime();

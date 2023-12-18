@@ -7,7 +7,7 @@ export const readAllToDos = () => {
     try {
       return JSON.parse(storedTodos);
     } catch (error) {
-      console.error('Error parsing stored data:', error);
+      console.error("Error parsing stored data:", error);
     }
   }
 
@@ -15,13 +15,11 @@ export const readAllToDos = () => {
 };
 
 export const writeAllToDos = (toDos) => {
-  const toDosToAdd = toDos.map(toDo => (
-    {
-      id: toDo.id,
-      title: toDo.title,
-      completed: toDo.completed
-    }
-  ));
+  const toDosToAdd = toDos.map((toDo) => ({
+    id: toDo.id,
+    title: toDo.title,
+    completed: toDo.completed,
+  }));
 
   localStorage.setItem(LOCAL_STORAGE_NAME, JSON.stringify(toDosToAdd));
 };
@@ -32,4 +30,4 @@ const getFromLocal = () => {
 
   localStorage.setItem(LOCAL_STORAGE_NAME, JSON.stringify([]));
   return [];
-}
+};

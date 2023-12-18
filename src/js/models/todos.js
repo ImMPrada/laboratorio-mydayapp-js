@@ -1,14 +1,14 @@
-import * as storage from '../storage.js';
-import { ToDo } from './toDo.js';
+import * as storage from "../storage.js";
+import { ToDo } from "./toDo.js";
 
-export const ALL_FILTER = '#/all';
-export const COMPLETED_FILTER = '#/completed';
-export const PENDING_FILTER = '#/pending';
+export const ALL_FILTER = "#/all";
+export const COMPLETED_FILTER = "#/completed";
+export const PENDING_FILTER = "#/pending";
 
 export class ToDos {
   constructor() {
     this.toDos = [];
-    this.filter = '';
+    this.filter = "";
     this.filteredToDos = [];
   }
 
@@ -16,16 +16,18 @@ export class ToDos {
     this.toDos = storage.readAllToDos();
   }
 
-  filterBy(filter){
+  filterBy(filter) {
     this.filter = filter;
 
-    if (filter === COMPLETED_FILTER){
-      this.filteredToDos = this.toDos.filter(todo => todo.completed === true);
+    if (filter === COMPLETED_FILTER) {
+      this.filteredToDos = this.toDos.filter((todo) => todo.completed === true);
       return;
     }
 
-    if (filter === PENDING_FILTER){
-      this.filteredToDos = this.toDos.filter(todo => todo.completed === false);
+    if (filter === PENDING_FILTER) {
+      this.filteredToDos = this.toDos.filter(
+        (todo) => todo.completed === false
+      );
       return;
     }
 
@@ -34,14 +36,14 @@ export class ToDos {
   }
 
   destroyById(id) {
-    this.toDos = this.toDos.filter(todo => todo.id !== id);
+    this.toDos = this.toDos.filter((todo) => todo.id !== id);
     storage.writeAllToDos(this.toDos);
 
     this.filterBy(this.filter);
   }
 
   addTodo(title) {
-    const toDo = new ToDo(title)
+    const toDo = new ToDo(title);
 
     this.toDos.push(new ToDo(title));
     storage.writeAllToDos(this.toDos);

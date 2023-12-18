@@ -20,6 +20,10 @@ export const listenHashChange = (toDos) => {
   routeTo(newHash, toDos);
 };
 
+export const removeAllCompletedTodos = (toDos) => {
+  controller.destroyCompleted(toDos);
+};
+
 export const createTodo = (title, toDos) => {
   controller.create(title, toDos);
 };

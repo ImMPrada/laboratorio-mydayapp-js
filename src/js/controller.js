@@ -21,6 +21,11 @@ export const destroy = (id, toDos) => {
   view.renderNewList(toDos);
 };
 
+export const destroyCompleted = (toDos) => {
+  toDos.destroyCompleted();
+  view.renderNewList(toDos);
+};
+
 export const update = (id, payload, toDos) => {
   toDos.updateById(id, payload);
   view.renderNewList(toDos);

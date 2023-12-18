@@ -46,6 +46,13 @@ export class ToDos {
     this.filterBy(this.filter);
   }
 
+  destroyCompleted() {
+    this.toDos = this.toDos.filter((toDo) => toDo.completed === false);
+    storage.writeAllToDos(this.toDos);
+
+    this.filterBy(this.filter);
+  }
+
   updateById(id, payload) {
     this.toDos = this.toDos.map((toDo) => {
       if (toDo.id === id) toDo.update(payload);

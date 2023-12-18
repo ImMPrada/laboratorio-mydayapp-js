@@ -4,7 +4,7 @@ import {
   addHashListenerToDocument,
 } from "./js/eventsAssigner";
 import { routeTo } from "./js/routes";
-import { ToDos } from "./js/models/todos";
+import { ToDos } from "./js/models/toDos";
 
 const TODOS = new ToDos();
 TODOS.loadAll();

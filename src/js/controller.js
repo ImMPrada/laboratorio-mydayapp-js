@@ -1,5 +1,5 @@
 import * as view from "./views/todoList";
-import { COMPLETED_FILTER } from "./models/todos";
+import { COMPLETED_FILTER } from "./models/toDos";
 
 export const index = (filter, toDos) => {
   toDos.loadAll();
@@ -18,5 +18,10 @@ export const create = (title, toDos) => {
 
 export const destroy = (id, toDos) => {
   toDos.destroyById(id);
+  view.renderNewList(toDos);
+};
+
+export const toggleCompleted = (id, toDos) => {
+  toDos.toggleCompletedById(id);
   view.renderNewList(toDos);
 };

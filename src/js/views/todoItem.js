@@ -5,8 +5,12 @@ export const todoItem = (toDo, toDos) => {
     controller.destroy(id, toDos);
   };
 
+  const toggleCompletedState = (id) => {
+    controller.toggleCompleted(id, toDos);
+  };
+
   const li = document.createElement("li");
-  li.classList.add(toDo.completed ? "completed" : null);
+  toDo.completed ? li.classList.add("completed") : null;
 
   const div = document.createElement("div");
   div.classList.add("view");
@@ -15,6 +19,7 @@ export const todoItem = (toDo, toDos) => {
   checkbox.classList.add("toggle");
   checkbox.type = "checkbox";
   checkbox.checked = toDo.completed;
+  checkbox.addEventListener("change", () => toggleCompletedState(toDo.id));
 
   const label = document.createElement("label");
   label.textContent = toDo.title;

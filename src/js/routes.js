@@ -1,5 +1,5 @@
 import * as controller from "./controller";
-import { ALL_FILTER, COMPLETED_FILTER, PENDING_FILTER } from "./models/todos";
+import { ALL_FILTER, COMPLETED_FILTER, PENDING_FILTER } from "./models/toDos";
 
 const KNOWN_HASHES = {
   filters: [ALL_FILTER, COMPLETED_FILTER, PENDING_FILTER],

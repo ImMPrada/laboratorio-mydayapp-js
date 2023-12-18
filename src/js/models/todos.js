@@ -42,6 +42,16 @@ export class ToDos {
     this.filterBy(this.filter);
   }
 
+  toggleCompletedById(id) {
+    this.toDos = this.toDos.map((todo) => {
+      if (todo.id === id) todo.completed = !todo.completed;
+      return todo;
+    });
+    storage.writeAllToDos(this.toDos);
+
+    this.filterBy(this.filter);
+  }
+
   addTodo(title) {
     const toDo = new ToDo(title);
 

@@ -1,5 +1,6 @@
 import { main } from "./containerComponents/main";
 import { footer } from "./containerComponents/footer";
+import * as controller from "../controller";
 
 const ID = "container";
 
@@ -12,6 +13,6 @@ export const renderContent = (toDos) => {
   const mainSection = main(toDos);
   if (mainSection) container.appendChild(mainSection);
 
-  const footerSection = footer(toDos);
+  const footerSection = footer(toDos, controller);
   if (footerSection) container.appendChild(footerSection);
 };

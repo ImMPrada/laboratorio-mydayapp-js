@@ -1,7 +1,7 @@
 import { filterLink } from "./filterLink";
+import { clearCompletedButton } from "./clearCompletedButton";
 
-export const footer = (toDos) => {
-  console.log(toDos.toDos.length);
+export const footer = (toDos, controller) => {
   if (toDos.toDos.length === 0) return;
 
   const pendingTodos = toDos.countPending();
@@ -19,33 +19,10 @@ export const footer = (toDos) => {
   ul.classList.add("filters");
 
   const all = filterLink("#/all", "All", toDos.filter);
-  // const all = document.createElement("li");
-  // const allLink = document.createElement("a");
-  // allLink.href = "#/all";
-  // allLink.classList.add("selected");
-  // allLink.innerHTML = "All";
-
   const pending = filterLink("#/pending", "Pending", toDos.filter);
-  // const pending = document.createElement("li");
-  // const pendingLink = document.createElement("a");
-  // pendingLink.href = "#/pending";
-  // pendingLink.innerHTML = "Pending";
-
   const completed = filterLink("#/completed", "Completed", toDos.filter);
-  // const completed = document.createElement("li");
-  // const completedLink = document.createElement("a");
-  // completedLink.href = "#/completed";
-  // completedLink.innerHTML = "Completed";
+  const button = clearCompletedButton(toDos, controller);
 
-  const button = document.createElement("button");
-  button.classList.add("clear-completed");
-  button.id = "clear_completed_button";
-  button.innerHTML = "Clear completed";
-  if (toDos.countCompleted() === 0) button.hidden = true;
-
-  // all.appendChild(allLink);
-  // pending.appendChild(pendingLink);
-  // completed.appendChild(completedLink);
   ul.appendChild(all);
   ul.appendChild(pending);
   ul.appendChild(completed);

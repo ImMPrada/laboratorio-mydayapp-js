@@ -67,7 +67,12 @@ export class ToDos {
     const toDo = new ToDo(title);
 
     this.toDos.push(new ToDo(title));
+    this.filterBy(this.filter);
     storage.writeAllToDos(this.toDos);
     return toDo;
+  }
+
+  countPending() {
+    return this.toDos.filter((toDo) => toDo.completed === false).length;
   }
 }

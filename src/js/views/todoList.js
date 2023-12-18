@@ -4,8 +4,8 @@ const LIST_ID = "todo-list";
 
 export const renderNewList = (toDos) => {
   const todoList = document.getElementById(LIST_ID);
-  todoList.innerHTML = "";
   if (!todoList) return;
+  todoList.innerHTML = "";
 
   toDos.filteredToDos.forEach((toDo) => {
     const todoItemElement = todoItem(toDo, toDos);

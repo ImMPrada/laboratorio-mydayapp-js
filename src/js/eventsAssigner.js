@@ -1,5 +1,5 @@
 import {
-  listenHashChange,
+  handleHashChange,
   createTodo,
   removeAllCompletedTodos,
 } from "./routes";
@@ -18,7 +18,7 @@ export const addEventToToDoInput = (toDosCollection) => {
 
 export const addHashListenerToDocument = (toDosCollection) => {
   window.addEventListener("hashchange", () =>
-    listenHashChange(toDosCollection)
+    handleHashChange(toDosCollection)
   );
 };
 

@@ -19,7 +19,7 @@ export const routeTo = (hash, toDosCollection) => {
   return (window.location.href = "/");
 };
 
-export const listenHashChange = (toDosCollection) => {
+export const handleHashChange = (toDosCollection) => {
   const newHash = new URL(document.URL).hash;
   routeTo(newHash, toDosCollection);
 };
